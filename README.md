@@ -15,4 +15,5 @@ We use LDA topic modeling to aggregate and discover what is being asked in the S
 
 ## Figure
 `popularity_trend_posts`:  The popularity trend of new posts
+
 `popularity_trend_users`:  The popularity trend of new users
