@@ -10,10 +10,10 @@ Artifact package for our paper. This repository includes our data and scripts.
 4. Random sample size for each topic can be found in `sample-size-per-topic.md`
 5. Solution strategies and examples can be found in `solutions.md`
 
-## Script
+## Scripts
 We use LDA topic modeling to aggregate and discover what is being asked in the SO questions: `topic_modeling.py`
 
-## Figure
+## Figures
 `popularity_trend_posts`:  The popularity trend of new posts
 
 `popularity_trend_users`:  The popularity trend of new users
