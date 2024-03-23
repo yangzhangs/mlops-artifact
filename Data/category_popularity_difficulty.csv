@@ -1,0 +1,6 @@
+category,topic,count,popularity,difficulty
+Data,Data analysis,944,1.03,0.89
+Environment,Endpoint,1449,1.02,0.99
+Model,Model design,1735,0.98,1.17
+Component,Service,1166,1.01,1.13
+Support,Model management,1051,0.98,0.88
