@@ -108,7 +108,97 @@ def mallet_modeling(plt=None):
     for m, cv in zip(x, coherence_values):
         print("Num Topics =", m, " has Coherence Value of", round(cv, 4))
 
+def format_topics_sentences(ldamodel, corpus, texts):
+    # Init output
+    sent_topics_df = pd.DataFrame()
 
+    #print(len(corpus))
+    # Get main topic in each document
+    for i, row in enumerate(ldamodel[corpus]):
+        row = sorted(row, key=lambda x: (x[1]), reverse=True)
+        # Get the Dominant topic, Perc Contribution and Keywords for each document
+        for j, (topic_num, prop_topic) in enumerate(row):
+            if j == 0:  # => dominant topic
+                wp = ldamodel.show_topic(topic_num)
+                topic_keywords = ", ".join([word for word, prop in wp])
+                sent_topics_df = sent_topics_df.append(pd.Series([int(topic_num), round(prop_topic,4), topic_keywords]), ignore_index=True)
+            else:
+                break
+    sent_topics_df.columns = ['Dominant_Topic', 'Perc_Contribution', 'Topic_Keywords']
+
+    # Add original text to the end of the output
+    contents = pd.Series(texts)
+    sent_topics_df = pd.concat([sent_topics_df, contents], axis=1)
+    return(sent_topics_df)
+
+def getEachPostTopic():
+    clean_data = getCleanText()
+    id2word = corpora.Dictionary(clean_data)
+    # Create Corpus
+    texts = clean_data
+    # Term Document Frequency
+    corpus = [id2word.doc2bow(text) for text in texts]
+    #print(corpus[:1])
+    model = LdaMallet(mallet_path, corpus=corpus, num_topics=15, id2word=id2word, alpha=50/15,
+                      topic_threshold=0.0, iterations=1500, random_seed=123)
+    #print(model.print_topics())
+    joblib.dump(model, 'optimal_mlops_model_issues.pkl')
+    model = joblib.load('optimal_mlops_model_issues.pkl')
+    #doc_lda = model[corpus]
+    df_topic_sents_keywords = format_topics_sentences(ldamodel=model, corpus=corpus, texts=clean_data)
+
+    # Format
+    df_dominant_topic = df_topic_sents_keywords.reset_index()
+    df_dominant_topic.columns = ['Document_No', 'Dominant_Topic', 'Topic_Perc_Contrib', 'Keywords', 'Text']
+
+    # Show
+    for i in range(1,2104):
+        topic = df_dominant_topic.get('Dominant_Topic')[i-1]
+        perc = df_dominant_topic.get('Topic_Perc_Contrib')[i-1]
+        keywords = df_dominant_topic.get('Keywords')[i-1]
+        print(i)
+        print('%s,%s,%s'%(topic,perc,keywords))
+
+def getSamplePosts():
+    clean_data = getCleanText()
+    id2word = corpora.Dictionary(clean_data)
+    # Create Corpus
+    texts = clean_data
+    # Term Document Frequency
+    corpus = [id2word.doc2bow(text) for text in texts]
+    # print(corpus[:1])
+    # model = LdaMallet(mallet_path, corpus=corpus, num_topics=15, id2word=id2word, alpha=50/15,
+    #                  topic_threshold=0.0, iterations=1500, random_seed=123)
+    # print(model.print_topics())
+    # joblib.dump(model, 'optimal_mlops_model.pkl')
+    model = joblib.load('optimal_mlops_model_issues.pkl')
+    # doc_lda = model[corpus]
+    df_topic_sents_keywords = format_topics_sentences(ldamodel=model, corpus=corpus, texts=clean_data)
+
+    # Format
+    df_dominant_topic = df_topic_sents_keywords.reset_index()
+    df_dominant_topic.columns = ['Document_No', 'Dominant_Topic', 'Topic_Perc_Contrib', 'Keywords', 'Text']
+
+    # Group top 5 sentences under each topic
+    sent_topics_sorteddf_mallet = pd.DataFrame()
+
+    sent_topics_outdf_grpd = df_topic_sents_keywords.groupby('Dominant_Topic')
+
+    for i, grp in sent_topics_outdf_grpd:
+        sent_topics_sorteddf_mallet = pd.concat([sent_topics_sorteddf_mallet,
+                                                 grp.sort_values(['Perc_Contribution'], ascending=[0]).head(1)],
+                                                axis=0)
+
+    # Reset Index
+    sent_topics_sorteddf_mallet.reset_index(drop=True, inplace=True)
+
+    # Format
+    sent_topics_sorteddf_mallet.columns = ['Topic_Num', "Topic_Perc_Contrib", "Keywords", "Text"]
+
+    # Show
+    sent_topics_sorteddf_mallet.head()
+    for i in range(len(sent_topics_sorteddf_mallet)):
+        print(i, sent_topics_sorteddf_mallet.loc[i, 'Text'])
 
 if __name__ == '__main__':
     #mallet_modeling()
