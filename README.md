@@ -1,5 +1,5 @@
 # Artifact
-Artifact package for our paper. This repository includes our data and scripts. We intend to enhance the explanation of this artifact and add additional data if the paper is accepted.
+Artifact package for our paper. This repository includes our data and scripts. We intend to enhance the explanation of this artifact if the paper is accepted.
 
 ## Tools
 - MALLET v2.0.8
