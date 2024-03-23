@@ -10,7 +10,7 @@ Artifact package for our paper. This repository includes our data and scripts.
 
 ## Data
 1. Data source (2023.06.30): SO questions and answers, GitHub Issues.
-2. Tag identification method: see `mlops-related-tags.md`
+2. Tag identification method, the details of the 6 selected websites and the full list of MLOpstools/platforms are available in: `mlops-related-tags.md`
 3. Data for manual classification:
 - Our final dataset consists of 8,443 posts (6,345 questions and 2,098 accepted answers) and 2,103 issues. 
 - `mlops_questions.csv` and `mlops_accepted_answers.csv`
