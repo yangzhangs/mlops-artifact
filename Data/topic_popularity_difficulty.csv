@@ -1,12 +1,12 @@
 category,topic,count,popularity,difficulty
-Data,Data analysis,466,0.82,1.11
+Data,Data processing,466,0.82,1.11
 Environment,Endpoint,554,0.99,1.28
 Model,Model design,244,0.77,1.08
 Environment,Service,396,0.88,1.04
 Model,Model management,644,0.94,1.15
-Data,Data preprocessing,478,1.22,0.79
+Data,Data preparation,478,1.22,0.79
 Support,Connection,287,0.87,1.00 
-Support,Platform,275,1.00 ,0.89
+Support,Documentation,275,1.00 ,0.89
 Component,Dependency,352,1.12,1.13
 Support,Authorization,489,1.04,0.92
 Model,Model monitoring,459,1.14,1.11
