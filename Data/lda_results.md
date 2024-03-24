@@ -54,7 +54,7 @@
   - Num Topics = 75  has Coherence Value of 0.4714
   - Num Topics = 80  has Coherence Value of 0.4612
 
-# LDA results for GitHub issues:
+# LDA results for GH issues:
 ## iteration=500
 - Num Topics = 5  has Coherence Value of 0.5268
 - Num Topics = 10  has Coherence Value of 0.5476
