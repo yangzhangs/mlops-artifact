@@ -15,7 +15,7 @@ Artifact package for our paper. This repository includes our data and scripts. W
 - Our final dataset consists of 8,443 posts (6,345 questions and 2,098 accepted answers) and 2,103 issues. 
 - `mlops_questions.csv` and `mlops_accepted_answers.csv`
 - `mlops_issues.csv`
-4. LDA modeling results can be found in `lda_results.md`
+4. LDA results can be found in `lda_results.md`
 5. Category/topic's popularity and difficulty values can be found in `category_popularity_difficulty.csv` and `topic_popularity_difficulty.csv`
 6. Solution strategies and examples can be found in `solutions.md`
 
