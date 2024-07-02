@@ -7,6 +7,8 @@ Artifact package for our paper. This repository includes our data and scripts. W
 - pandas v1.5.2
 - BeautifulSoup v4.11.1
 - NLTK v3.8.1
+- Senti4SD
+- R
 
 ## Data
 1. Data source (2023.06.30): SO questions and answers, GitHub Issues.
@@ -16,12 +18,15 @@ Artifact package for our paper. This repository includes our data and scripts. W
 - `mlops_questions.csv` and `mlops_accepted_answers.csv`
 - `mlops_issues.csv`
 4. LDA results can be found in `lda_results.md`
-5. Category/topic's popularity and difficulty values can be found in `category_popularity_difficulty.csv` and `topic_popularity_difficulty.csv`
-6. Solution strategies and examples can be found in `solutions.md`
+5. Solution strategies and examples can be found in `solutions.md`
 
 ## Scripts
-We use LDA topic modeling to aggregate and discover what is being discussed: 
+1. We use LDA topic modeling to aggregate and discover what is being discussed: 
 `topic_modeling.py`
+2. We use the Cox Stuart trend test to determine if each topic's yearly rate metric is increasing or decreasing over time, to a statistically significant degree:
+`stats.R`
+3. We use Senti4SD tool to identify the sentiment expressed in the post or issue’s text description text:
+`sentiment_analysis.py`
 
 ## Figures
 `popularity_trend_posts`:  The popularity trend of new posts
