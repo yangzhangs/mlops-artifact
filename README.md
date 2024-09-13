@@ -1,5 +1,5 @@
 # Artifact
-Artifact package for our paper. This repository includes our data and scripts. We intend to enhance the explanation of this artifact if the paper is accepted.
+Artifact package for our paper. This repository includes our data and scripts. 
 
 ## Tools
 - MALLET v2.0.8
@@ -11,14 +11,14 @@ Artifact package for our paper. This repository includes our data and scripts. W
 - R
 
 ## Data
-1. Data source (2023.06.30): SO questions and answers, GitHub Issues.
+1. Data source (2023.06.30): SO posts and GitHub issues.
 2. Tag identification method, the details of the 6 selected websites and the full list of MLOpstools/platforms are available in: `mlops-related-tags.md`
 3. Data for manual classification:
-- Our final dataset consists of 8,443 posts (6,345 questions and 2,098 accepted answers) and 2,103 issues. 
-- `mlops_questions.csv` and `mlops_accepted_answers.csv`
+- Our final dataset consists of 6,345 posts and 2,103 issues. 
+- `mlops_posts.csv` 
 - `mlops_issues.csv`
 4. LDA results can be found in `lda_results.md`
-5. Solution strategies and examples can be found in `solutions.md`
+5. 100 samples for the solution analysis can be found in `solution_analysis_samples.csv`
 
 ## Scripts
 1. We use LDA topic modeling to aggregate and discover what is being discussed: 
